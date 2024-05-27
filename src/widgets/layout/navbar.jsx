@@ -22,7 +22,10 @@ export function Navbar({ brandName, routes, action }) {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 text-inherit lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {routes.map(({ name, path, icon, href, target }) => (
+      {routes.filter(({ name, path, icon, href, target }) => {
+        console.log(name)
+        return name === 'profile'
+      }).map(({ name, path, icon, href, target }) => (
         <Typography
           key={name}
           as="li"
@@ -69,7 +72,7 @@ export function Navbar({ brandName, routes, action }) {
           </Typography>
         </Link>
         <div className="hidden lg:block">{navList}</div>
-        <div className="hidden gap-2 lg:flex">
+        {/* <div className="hidden gap-2 lg:flex">
           <a
             href="https://www.material-tailwind.com/blocks?ref=mtkr"
             target="_blank"
@@ -81,7 +84,7 @@ export function Navbar({ brandName, routes, action }) {
           {React.cloneElement(action, {
             className: "hidden lg:inline-block",
           })}
-        </div>
+        </div> */}
         <IconButton
           variant="text"
           size="sm"
@@ -96,7 +99,7 @@ export function Navbar({ brandName, routes, action }) {
           )}
         </IconButton>
       </div>
-      <MobileNav
+      {/* <MobileNav
         className="rounded-xl bg-white px-4 pt-2 pb-4 text-blue-gray-900"
         open={openNav}
       >
@@ -115,20 +118,20 @@ export function Navbar({ brandName, routes, action }) {
             className: "w-full block",
           })}
         </div>
-      </MobileNav>
+      </MobileNav> */}
     </MTNavbar>
   );
 }
 
 Navbar.defaultProps = {
-  brandName: "Material Tailwind React",
+  brandName: "성남 고등동 성당",
   action: (
     <a
-      href="https://www.creative-tim.com/product/material-tailwind-kit-react"
+      href="/"
       target="_blank"
     >
       <Button variant="gradient" size="sm" fullWidth>
-        free download
+        Home
       </Button>
     </a>
   ),
